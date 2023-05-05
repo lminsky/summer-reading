@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+
+    <title>Summer Reading!</title>
+
+    <!-- Import the webpage's stylesheet -->
+    <link rel="stylesheet" href="./style.css" />
+
+    <!-- Import the webpage's javascript file -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="item2">
+        <p>
+          <strong>Year</strong>
+        </p>
+        <select id="years">
+        </select>
+        <p>
+          <strong>Grade</strong>
+        </p>
+        <select id="audience">
+        </select>
+        <p>
+          <strong>Tags</strong>
+        </p>
+        <div id="tags">
+        </div>
+      </div>
+      <div class="item3" id="books">
+      </div>
+    </div>
+    
+    <!-- The Modal -->
+    <div id="modal" class="modal">
+      <center><img id="modalImage" height="200px"></center>
+      <strong><div id="modalName"></div></strong>
+      <div id="modalAuthor"></div>
+      <br>
+      <div id="modalDescription"></div>
+      <br>
+      <div id="modalTags"></div>
+    </div>
+    
+  </body>
+</html>

@@ -1,0 +1,147 @@
+h1 {
+  font-family: Arial, sans-serif;
+}
+
+/* Grid Stuff */
+
+.item1 { grid-area: header; }
+.item2 { 
+  grid-area: menu; 
+  min-width: 300px;
+}
+.item3 { grid-area: main; }
+.item4 { grid-area: right; }
+.item5 { grid-area: footer; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'menu main main main main main';
+  gap: 10px;
+/*   background-color: #932235; */
+  padding: 10px;
+}
+
+.grid-container > div {
+/*   background-color: #dddddd; */
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+  border: 5px solid #932235;
+}
+
+
+/* Select Stuff */
+select {
+  -webkit-appearance: menulist-button;
+   height: 50px;
+  width: 80%;
+/*   height: 20px; */
+  font-size: 16pt;
+}
+
+/* Tags */
+.tag {
+/*   background: #ff0000; */
+}
+
+#tags {
+  text-align: left;
+  padding: 5px; 
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.tag > label {
+  margin-left: 3px;
+  font-size: 18pt;
+}
+div.tag > input {
+  margin-left: 3px;
+}
+
+/* Checkbox stuff */
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+/*   background-color: var(--form-background); */
+  margin: 0;
+  margin-bottom: 2px;
+
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+
+  display: inline-grid;
+  place-content: center;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+  /* Windows High Contrast Mode */
+  background-color: CanvasText;
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+
+/* Book stuff */
+book {
+  width: 200px;
+  height: 300px;
+  display: inline-block;
+  position: relative;
+  margin: 20px;
+}
+
+book > img {
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+desc {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 170px;
+  height: 270px;
+  max-width: 200px;
+  max-height: 300px;
+  background-color: #000000d0;
+  padding: 15px;
+  text-align: left;
+  opacity: 0%;
+}
+
+desc:hover {
+  opacity: 100%;
+  color: #ffffff;
+  font-size: 16pt;
+}
+
+name {
+  font-weight: bold;
+  display: block;
+}
+
+author {
+  display: block;
+  margin-top:5px;
+}
