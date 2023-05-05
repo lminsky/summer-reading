@@ -101,8 +101,8 @@ input[type="checkbox"]:checked::before {
 
 /* Book stuff */
 book {
-  width: 200px;
-  height: 300px;
+  width: 180px;
+  height: 270px;
   display: inline-block;
   position: relative;
   margin: 20px;
@@ -120,10 +120,10 @@ desc {
   position: absolute;
   top: 0px;
   left: 0px;
-  width: 170px;
-  height: 270px;
-  max-width: 200px;
-  max-height: 300px;
+  width: 151px;
+  height: 239px;
+  max-width: 180px;
+  max-height: 270px;
   background-color: #000000d0;
   padding: 15px;
   text-align: left;
