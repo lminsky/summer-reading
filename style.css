@@ -30,14 +30,46 @@ h1 {
   border: 5px solid #932235;
 }
 
+/* Mobile Responsive Grid */
+@media screen and (max-width: 768px) {
+  .grid-container {
+    grid-template-areas:
+      'menu'
+      'main';
+    gap: 15px;
+    padding: 15px 10px;
+  }
+  
+  .item2 {
+    min-width: unset;
+    padding: 15px 10px;
+    font-size: 20px;
+  }
+  
+  .item3 {
+    padding: 15px 10px;
+    font-size: 20px;
+  }
+}
+
 
 /* Select Stuff */
 select {
   -webkit-appearance: menulist-button;
-   height: 50px;
+  height: 50px;
   width: 80%;
 /*   height: 20px; */
   font-size: 16pt;
+  min-height: 44px; /* Touch-friendly minimum size */
+}
+
+@media screen and (max-width: 768px) {
+  select {
+    width: 95%;
+    height: 55px;
+    font-size: 18px;
+    min-height: 48px;
+  }
 }
 
 /* Tags */
@@ -56,9 +88,46 @@ select {
 div.tag > label {
   margin-left: 3px;
   font-size: 18pt;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+  min-height: 44px; /* Touch-friendly */
+  display: inline-flex;
+  align-items: center;
 }
 div.tag > input {
   margin-left: 3px;
+}
+
+@media screen and (max-width: 768px) {
+  #tags {
+    width: 95%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    column-gap: 10px;
+  }
+  
+  div.tag {
+    margin: 4px 0;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+  
+  div.tag > label {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 6px 0;
+    margin-left: 6px;
+    line-height: 1.2;
+    font-family: Arial, sans-serif;
+  }
+  
+  div.tag > input {
+    margin-left: 6px;
+    flex-shrink: 0;
+  }
 }
 
 /* Checkbox stuff */
@@ -79,6 +148,15 @@ input[type="checkbox"] {
 
   display: inline-grid;
   place-content: center;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  input[type="checkbox"] {
+    width: 1.3em;
+    height: 1.3em;
+    margin-right: 5px;
+  }
 }
 
 input[type="checkbox"]::before {
@@ -106,6 +184,7 @@ book {
   display: inline-block;
   position: relative;
   margin: 20px;
+  cursor: pointer;
 }
 
 book > img {
@@ -114,6 +193,21 @@ book > img {
   margin-left: auto;
   margin-right: auto;
   position: relative;
+}
+
+@media screen and (max-width: 768px) {
+  book {
+    width: 140px;
+    height: 210px;
+    margin: 10px 5px;
+  }
+  
+  #books {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+  }
 }
 
 desc {
@@ -136,6 +230,28 @@ desc:hover {
   font-size: 16pt;
 }
 
+@media screen and (max-width: 768px) {
+  desc {
+    width: 111px;
+    height: 179px;
+    max-width: 140px;
+    max-height: 210px;
+    padding: 10px;
+    font-size: 12px;
+  }
+  
+  /* Show description on touch devices */
+  book:active desc,
+  book:focus desc {
+    opacity: 100%;
+    color: #ffffff;
+  }
+  
+  desc:hover {
+    font-size: 12px;
+  }
+}
+
 name {
   font-weight: bold;
   display: block;
@@ -144,4 +260,58 @@ name {
 author {
   display: block;
   margin-top:5px;
+}
+
+/* Mobile Modal Improvements */
+@media screen and (max-width: 768px) {
+  .modal {
+    padding: 15px !important;
+    max-width: 90% !important;
+    max-height: 90% !important;
+    overflow-y: auto !important;
+  }
+  
+  #modalImage {
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: 150px !important;
+  }
+  
+  #modalName {
+    font-size: 18px !important;
+    margin: 10px 0 !important;
+  }
+  
+  #modalAuthor {
+    font-size: 14px !important;
+    margin-bottom: 10px !important;
+  }
+  
+  #modalDescription {
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+  }
+  
+  #modalTags {
+    font-size: 12px !important;
+  }
+}
+
+/* General Mobile Touch Improvements */
+@media screen and (max-width: 768px) {
+  /* Increase touch target sizes */
+  a, button, select, input, label {
+    min-height: 44px;
+  }
+  
+  /* Prevent zoom on input focus */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+  
+  /* Better text readability */
+  body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
 }
