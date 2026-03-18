@@ -12,17 +12,27 @@ $.get(csvUrl, function (data, status) {
   let titles;
   for (let i in temp) {
     if (i == 0) {
-      titles = temp[i].split("  ");
+      titles = temp[i].split("\t");  // Use tab separator for TSV
       for(let t in titles) {
         titles[t] = titles[t].trim();
       }
       continue;
     }
-    temp[i] = temp[i].split(" ");
+    
+    // Skip empty rows
+    if (!temp[i].trim()) continue;
+    
+    temp[i] = temp[i].split("\t");  // Use tab separator for TSV
     let book = {};
     for (let j in temp[i]) {
-      book[titles[j].toLowerCase()] = temp[i][j];
+      if (titles[j] && temp[i][j]) {  // Check that both title and data exist
+        book[titles[j].toLowerCase()] = temp[i][j];
+      }
     }
+    
+    // Skip books without required fields
+    if (!book.year || !book.audience || !book.tags) continue;
+    
     // console.log(book)
 
     //Split Years
@@ -88,10 +98,26 @@ function displayAudiences() {
     for(let a of b.audience) {
       if (!audiences.includes(a)) {
         audiences.push(a);
-        audiences.sort();
       }
     }
   }
+  
+  // Sort grades in proper ascending order
+  audiences.sort((a, b) => {
+    // Handle kindergarten
+    if (a.toLowerCase().includes('k') && !b.toLowerCase().includes('k')) return -1;
+    if (!a.toLowerCase().includes('k') && b.toLowerCase().includes('k')) return 1;
+    
+    // Extract numbers from grade strings
+    const numA = parseInt(a.match(/\d+/)?.[0]) || 0;
+    const numB = parseInt(b.match(/\d+/)?.[0]) || 0;
+    
+    // If both have numbers, sort by number
+    if (numA && numB) return numA - numB;
+    
+    // Fallback to alphabetical
+    return a.localeCompare(b);
+  });
   let select = $("#audience");
   select.empty();
   for(let a of audiences) {
